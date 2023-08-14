@@ -23,6 +23,10 @@ namespace SeleniumTests.Core.Selenium
         {
             new WebDriverWait(driver, TimeSpan.FromSeconds(time)).Until(d => element);
         }
+        public static void WaitElement(IWebDriver driver, Func<bool> condition, int time = 10)
+        {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(time)).Until(d => condition.Invoke());
+        }
 
     }
 }
