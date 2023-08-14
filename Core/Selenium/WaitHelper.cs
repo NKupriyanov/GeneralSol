@@ -19,6 +19,10 @@ namespace SeleniumTests.Core.Selenium
         {
             new WebDriverWait(driver, TimeSpan.FromSeconds(time)).Until(element => element.FindElements(by).Count == count);
         }
+        public static void WaitElement(IWebDriver driver, IWebElement element, int time = 10)
+        {
+            new WebDriverWait(driver, TimeSpan.FromSeconds(time)).Until(d => element);
+        }
 
     }
 }
