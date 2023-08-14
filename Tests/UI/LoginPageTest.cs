@@ -1,4 +1,6 @@
 ﻿using Net.Core.UI.Pages;
+using OpenQA.Selenium;
+using SeleniumTests.Core.Selenium;
 
 namespace Net.Core.Tests.UI
 {
@@ -9,9 +11,22 @@ namespace Net.Core.Tests.UI
         {
             Assert.DoesNotThrow(() =>
             {
-                new LoginPage().Login();
+                new LoginPage()
+                    .OpenPage()
+                    .Login();
+            });
+        }
+
+        [Test]
+        public void LoginAndLogOut()
+        {
+            Assert.DoesNotThrow(() =>
+            {
+                new LoginPage()
+                    .OpenPage()
+                    .Login()
+                    .GoToLogout();
             });
         }
     }
-
 }

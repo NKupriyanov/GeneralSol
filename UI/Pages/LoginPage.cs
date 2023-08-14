@@ -29,11 +29,13 @@ namespace Net.Core.UI.Pages
         }
 
         [AllureStep]
-        public void Login()
+        public AccountPage Login()
         {
             UserMailInput.SendKeys(AppConfiguration.Browser.Login);
             PasswordInput.SendKeys(AppConfiguration.Browser.Password);
             SubmitLoginButtom.Click();
+
+            return new AccountPage();
         }
     }
 }
