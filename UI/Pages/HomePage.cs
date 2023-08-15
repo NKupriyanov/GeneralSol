@@ -15,6 +15,7 @@ namespace Net.Core.UI.Pages
         private IWebElement AddDress => driver.FindElement (By.XPath("//*[@class='product_img_link'][.//*[@title='Printed Dress']][1]"));
         private IWebElement EnglishLanguage => driver.FindElement (By.XPath("//*[contains(text(),'English')]"));
         private IWebElement LanguageSelector => driver.FindElement (By.XPath("//div[@id='languages-block-top']"));
+        private IWebElement CartPageButton => driver.FindElement(By.XPath("//*[@title='View my shopping cart']"));
 
         public HomePage()
         {
@@ -60,6 +61,16 @@ namespace Net.Core.UI.Pages
 
             LanguageSelector.Click();
             EnglishLanguage.Click();
+        }
+
+        [AllureStep]
+        public CartPage GoCartPage()
+        {
+            LangagueSelect();
+            CartPageButton.Click();
+            LogSession.CurrentSession.Info($"CartPageButton click");
+
+            return new CartPage();
         }
     }
 }
