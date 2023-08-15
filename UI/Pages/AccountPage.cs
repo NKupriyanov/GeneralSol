@@ -13,6 +13,7 @@ namespace Net.Core.UI.Pages
         private IWebElement AccountHeader => driver.FindElement (By.ClassName("page-heading"));
         private IWebElement HomePageHeader => driver.FindElement (By.Id("header_logo"));
         private IWebElement LogoutButton => driver.FindElement (By.ClassName("logout"));
+        private IWebElement AddressButton => driver.FindElement(By.XPath("//*[@title='Addresses']"));
 
         public AccountPage()
         {
@@ -35,6 +36,15 @@ namespace Net.Core.UI.Pages
 
             LogoutButton.Click();
             return new LoginPage();
+        }
+
+        [AllureStep]
+        public SelectAddressPage GoToAddressPage()
+        {
+            AddressButton.Click();
+            LogSession.CurrentSession.Info("AddressButton click");
+
+            return new SelectAddressPage();
         }
     }
 }
