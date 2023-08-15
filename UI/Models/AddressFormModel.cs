@@ -28,4 +28,3 @@ namespace Net.Core.UI.Models
         }
     }
 }
-}

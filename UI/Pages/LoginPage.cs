@@ -16,7 +16,7 @@ namespace Net.Core.UI.Pages
 
         public LoginPage()
         {
-            WaitHelper.WaitElement(driver, LoginButtom);
+
         }
 
         [AllureStep]
@@ -25,6 +25,7 @@ namespace Net.Core.UI.Pages
             LogSession.CurrentSession.Info($"Navigate to URL {AppConfiguration.Browser.Url}");
 
             Browser.Instance.NavigateToUrl(AppConfiguration.Browser.Url);
+            WaitHelper.WaitElement(driver, LoginButtom);
             return this;
         }
 

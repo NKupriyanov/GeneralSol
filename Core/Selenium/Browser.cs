@@ -27,6 +27,7 @@ namespace SeleniumTests.Core.Selenium
             };
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(AppConfiguration.Browser.TimeOut);
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(AppConfiguration.Browser.TimeOut);
             driver.Manage().Window.Maximize();                       
         }
 
