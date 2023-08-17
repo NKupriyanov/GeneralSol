@@ -16,7 +16,30 @@ namespace Net.Core.UI.Pages
         private IWebElement EnglishLanguage => driver.FindElement (By.XPath("//*[contains(text(),'English')]"));
         private IWebElement LanguageSelector => driver.FindElement (By.XPath("//div[@id='languages-block-top']"));
         private IWebElement CartPageButton => driver.FindElement(By.XPath("//*[@title='View my shopping cart']"));
+        private IWebElement QuickAddTShirts => driver.FindElement(By.XPath("//*[@data-id-product='1'][1]"));
+        private IWebElement QuickAddBlouse => driver.FindElement(By.XPath("//*[@data-id-product='2'][1]"));
+        private IWebElement QuickAddDress => driver.FindElement(By.XPath("//*[@data-id-product='3'][1]"));
+        
+        [AllureStep]
+        public CartPage AddProducts()
+        {
+            ActivateQuickViewTShirt();
+            QuickAddTShirts.Click();
+            new BuyProductForm().ContinuePurchases();
+            LogSession.CurrentSession.Info($"Added TShirts");
 
+            ActivateQuickViewBlouse();
+            QuickAddBlouse.Click();
+            new BuyProductForm().ContinuePurchases();
+            LogSession.CurrentSession.Info($"Added Blouse");
+
+            ActivateQuickViewDress();
+            QuickAddDress.Click();
+            new BuyProductForm().GoToCart();
+            LogSession.CurrentSession.Info($"Added Dress");
+
+            return new CartPage();
+        }
         public HomePage()
         {
             WaitHelper.WaitElement(driver, InfoBlock);
