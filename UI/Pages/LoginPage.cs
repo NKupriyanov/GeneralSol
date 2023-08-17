@@ -1,5 +1,6 @@
 ﻿using Core.Configuration;
 using Net.Core.Core;
+using Net.Core.UI.Models;
 using NLog;
 using NUnit.Allure.Attributes;
 using OpenQA.Selenium;
@@ -13,7 +14,8 @@ namespace Net.Core.UI.Pages
         private IWebElement PasswordInput => driver.FindElement(By.Id("passwd"));
         private IWebElement SubmitLoginButtom => driver.FindElement(By.Id("SubmitLogin"));
         private IWebElement LoginButtom => driver.FindElement(By.ClassName("login"));
-
+        private IWebElement ErrorMessage => driver.FindElement(By.XPath("//*[@class='alert alert-danger'][.//li[contains(text(),'Authentication failed')]]"));
+        
         public LoginPage()
         {
 
@@ -32,11 +34,30 @@ namespace Net.Core.UI.Pages
         [AllureStep]
         public AccountPage Login()
         {
-            UserMailInput.SendKeys(AppConfiguration.Browser.Login);
-            PasswordInput.SendKeys(AppConfiguration.Browser.Password);
+            var user = DataGenerator.GetStandartUser();
+            UserMailInput.SendKeys(user.UserName);
+            PasswordInput.SendKeys(user.Password);
             SubmitLoginButtom.Click();
 
             return new AccountPage();
         }
+
+        [AllureStep]
+        public LoginPage LoginWithError()
+        {
+            var user = DataGenerator.GetFakeUser();
+            UserMailInput.SendKeys(user.UserName);
+            PasswordInput.SendKeys(user.Password);
+            SubmitLoginButtom.Click();
+
+            return this;
+        }
+
+        [AllureStep]
+        public string GetErrorMesage()
+        {
+            return ErrorMessage.Text;
+        }
     }
+
 }

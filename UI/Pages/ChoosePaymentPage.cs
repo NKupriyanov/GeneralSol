@@ -12,7 +12,7 @@ namespace Net.Core.UI.Pages
 
         public ChoosePaymentPage()
         {
-            WaitHelper.WaitElement(driver, ErrorMessage);
+            WaitHelper.WaitElement(driver, BankTransferButton);
         }
 
         [AllureStep]

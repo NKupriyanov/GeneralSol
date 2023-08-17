@@ -28,5 +28,18 @@ namespace Net.Core.Tests.UI
                     .GoToLogout();
             });
         }
+
+        [Test]
+        public void ErrorLogin()
+        {
+            var expectedMessage = "There is 1 error\r\nAuthentication failed.";
+            
+            var message = new LoginPage()
+                .OpenPage()
+                .LoginWithError()
+                .GetErrorMesage();
+            
+            Assert.That(message, Is.EqualTo(expectedMessage));
+        }
     }
 }

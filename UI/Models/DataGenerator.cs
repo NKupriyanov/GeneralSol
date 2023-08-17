@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using Core.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,26 @@ namespace Net.Core.UI.Models
                 City = faker.Address.City(),
                 MobilePhone = faker.Phone.PhoneNumber(),
                 AddressAlias = faker.Random.Word(),
+            };
+        }
+        
+        public static UserModel GetStandartUser()
+        {
+            return new UserModel()
+            {
+                UserName = AppConfiguration.Browser.Login,
+                Password = AppConfiguration.Browser.Password
+            };
+        }
+
+        public static UserModel GetFakeUser()
+        {
+            var faker = new Faker();
+
+            return new UserModel()
+            {
+                UserName = faker.Internet.Email(),
+                Password = faker.Internet.Password()
             };
         }
     }
