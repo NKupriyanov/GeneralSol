@@ -38,5 +38,21 @@ namespace Net.Core.Tests.UI
 
             Assert.That(message, Is.EqualTo(expectedMessage));
         }
+        
+        [Test]
+        public void BuyProducts()
+        {
+            new LoginPage()
+                .OpenPage()
+                .Login()
+                .GoToHomePage()
+                .AddProducts()
+                .ChekOut()
+                .Continue()
+                .ContinueWithCheckBox()
+                .SelectBankTransfer()
+                .ConfirmOrder()
+                .BackHome();
+        }
     }
 }
