@@ -2,7 +2,6 @@
 using NUnit.Allure.Attributes;
 using OpenQA.Selenium;
 using SeleniumTests.Core.Selenium;
-;
 
 namespace Net.Core.UI.Pages
 {

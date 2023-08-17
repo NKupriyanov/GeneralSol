@@ -1,7 +1,10 @@
-﻿using Core.Configuration;
+﻿using Allure.Commons;
+using Core.Configuration;
 using Core.Selenium;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+using OpenQA.Selenium.Support.Extensions;
+using TechTalk.SpecFlow.CommonModels;
 
 namespace SeleniumTests.Core.Selenium
 {
@@ -10,6 +13,7 @@ namespace SeleniumTests.Core.Selenium
         private static readonly ThreadLocal<Browser> BrowserInstances = new();
         public static Browser Instance => GetBrowser();
         private IWebDriver driver;
+        private AllureLifecycle allure = AllureLifecycle.Instance;
         public IWebDriver? Driver { get { return driver; } }
 
         private static Browser GetBrowser()
@@ -81,6 +85,13 @@ namespace SeleniumTests.Core.Selenium
             {
                 return null;
             }
+        }
+        
+        public void ScreenShot(string title = "screenShot")
+        {
+            var screen = driver.TakeScreenshot();
+            var screenBytes = screen.AsByteArray;
+            allure.AddAttachment(title, "image/png", screenBytes);
         }
     }
 }
