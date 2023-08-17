@@ -27,19 +27,23 @@ namespace Net.Core.UI.Pages
             QuickAddTShirts.Click();
             new BuyProductForm().ContinuePurchases();
             LogSession.CurrentSession.Info($"Added TShirts");
+            Browser.Instance.ScreenShot("Added TShirts");
 
             ActivateQuickViewBlouse();
             QuickAddBlouse.Click();
             new BuyProductForm().ContinuePurchases();
             LogSession.CurrentSession.Info($"Added Blouse");
+            Browser.Instance.ScreenShot("Added Blouse");
 
             ActivateQuickViewDress();
             QuickAddDress.Click();
             new BuyProductForm().GoToCart();
             LogSession.CurrentSession.Info($"Added Dress");
+            Browser.Instance.ScreenShot("Added Dress");
 
             return new CartPage();
         }
+        
         public HomePage()
         {
             WaitHelper.WaitElement(driver, InfoBlock);
@@ -75,6 +79,7 @@ namespace Net.Core.UI.Pages
             new Actions(driver)
                 .MoveToElement(product)
                 .Perform();
+            Browser.Instance.ScreenShot("Quick View Product");
         }
 
         [AllureStep]
@@ -83,6 +88,7 @@ namespace Net.Core.UI.Pages
             LogSession.CurrentSession.Info($"Language selection done");
 
             LanguageSelector.Click();
+            Browser.Instance.ScreenShot("Language selection");
             EnglishLanguage.Click();
         }
 
@@ -92,6 +98,7 @@ namespace Net.Core.UI.Pages
             LangagueSelect();
             CartPageButton.Click();
             LogSession.CurrentSession.Info($"CartPageButton click");
+            Browser.Instance.ScreenShot("CartPage Button click");
 
             return new CartPage();
         }

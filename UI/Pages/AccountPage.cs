@@ -26,6 +26,7 @@ namespace Net.Core.UI.Pages
             LogSession.CurrentSession.Info($"Moved to homepage");
 
             HomePageHeader.Click();
+            Browser.Instance.ScreenShot("Moved to homepage");
             return new HomePage();
         }
 
@@ -35,6 +36,7 @@ namespace Net.Core.UI.Pages
             LogSession.CurrentSession.Info($"Sign out of account");
 
             LogoutButton.Click();
+            Browser.Instance.ScreenShot("Sign out of account");
             return new LoginPage();
         }
 
@@ -43,6 +45,7 @@ namespace Net.Core.UI.Pages
         {
             AddressButton.Click();
             LogSession.CurrentSession.Info("AddressButton click");
+            Browser.Instance.ScreenShot("Address Button click");
 
             return new SelectAddressPage();
         }

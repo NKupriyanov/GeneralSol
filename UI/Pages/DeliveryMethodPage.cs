@@ -27,6 +27,7 @@ namespace Net.Core.UI.Pages
         {
             ContinueButton.Click();
             LogSession.CurrentSession.Info("ContinueButton click");
+            Browser.Instance.ScreenShot("Continue Button click");
 
             return this;
         }
@@ -36,6 +37,7 @@ namespace Net.Core.UI.Pages
         {
             var message = ErrorMessage.Text;
             LogSession.CurrentSession.Info($"Error is - {message}");
+            Browser.Instance.ScreenShot("Error");
 
             return message;
         }
@@ -46,6 +48,7 @@ namespace Net.Core.UI.Pages
             AgreeCheckBox.Click();
             ContinueButton.Click();
             LogSession.CurrentSession.Info("AgreeCheckBox and ContinueButton click");
+            Browser.Instance.ScreenShot("Continue Button");
 
             return new ChoosePaymentPage();
         }

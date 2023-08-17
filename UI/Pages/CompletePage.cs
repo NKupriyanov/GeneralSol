@@ -20,6 +20,7 @@ namespace Net.Core.UI.Pages
         {
             BackToOrdersButton.Click();
             LogSession.CurrentSession.Info("BackToOrdersButton click");
+            Browser.Instance.ScreenShot("Back To Orders Button click");
 
             return new HomePage();
         }

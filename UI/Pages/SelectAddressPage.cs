@@ -26,6 +26,7 @@ namespace Net.Core.UI.Pages
         {
             UpdateAddresseButton.Click();
             LogSession.CurrentSession.Info("UpdateAddresseButton click");
+            Browser.Instance.ScreenShot("Update Addresse Button click");
 
             return new NewAddressPage();
         }
@@ -35,6 +36,7 @@ namespace Net.Core.UI.Pages
         {
             ContinueButton.Click();
             LogSession.CurrentSession.Info("ContinueButton click");
+            Browser.Instance.ScreenShot("Continue Button click");
 
             return new DeliveryMethodPage();
         }

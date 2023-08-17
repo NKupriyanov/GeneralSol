@@ -20,6 +20,7 @@ namespace Net.Core.UI.Pages
         {
             var message = ErrorMessage.Text;
             LogSession.CurrentSession.Info($"Error is - {message}");
+            Browser.Instance.ScreenShot("Error");
 
             return message;
         }
@@ -29,6 +30,7 @@ namespace Net.Core.UI.Pages
         {
             BankTransferButton.Click();
             LogSession.CurrentSession.Info("BankTransferButton click");
+            Browser.Instance.ScreenShot("BankTransferButton click");
 
             return new ConfirmPaymentPage();
         }

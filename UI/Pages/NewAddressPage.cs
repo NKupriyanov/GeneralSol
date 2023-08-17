@@ -70,6 +70,7 @@ namespace Net.Core.UI.Pages
         [AllureStep]
         private void SaveAndContinue()
         {
+            Browser.Instance.ScreenShot("Save And Continue Button click");
             SaveAndContinueButton.Click();
             LogSession.CurrentSession.Info("SaveAndContinueButton click");
         }

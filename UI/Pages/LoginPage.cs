@@ -28,6 +28,7 @@ namespace Net.Core.UI.Pages
 
             Browser.Instance.NavigateToUrl(AppConfiguration.Browser.Url);
             WaitHelper.WaitElement(driver, LoginButtom);
+            Browser.Instance.ScreenShot("LoginPage loaded");
             return this;
         }
 
@@ -38,6 +39,7 @@ namespace Net.Core.UI.Pages
             UserMailInput.SendKeys(user.UserName);
             PasswordInput.SendKeys(user.Password);
             SubmitLoginButtom.Click();
+            Browser.Instance.ScreenShot("SubmitLoginButtom Click");
 
             return new AccountPage();
         }
@@ -56,6 +58,7 @@ namespace Net.Core.UI.Pages
         [AllureStep]
         public string GetErrorMesage()
         {
+            Browser.Instance.ScreenShot("Error message");
             return ErrorMessage.Text;
         }
     }

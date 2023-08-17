@@ -27,6 +27,7 @@ namespace Net.Core.UI.Pages
 
             WaitHelper.WaitElement(driver,() => ContinuePurchasesButton.Displayed);
             ContinuePurchasesButton.Click();
+            Browser.Instance.ScreenShot("Continue Button");
         }
 
         public CartPage GoToCart()
@@ -35,6 +36,7 @@ namespace Net.Core.UI.Pages
 
             WaitHelper.WaitElement(driver,() => CheckoutButton.Displayed);
             CheckoutButton.Click();
+            Browser.Instance.ScreenShot("Checkout Button");
 
             return new CartPage();
         }

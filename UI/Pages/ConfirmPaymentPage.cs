@@ -21,6 +21,7 @@ namespace Net.Core.UI.Pages
         {
             ConfirmOrderButton.Click();
             LogSession.CurrentSession.Info("ConfirmOrderButton click");
+            Browser.Instance.ScreenShot("Confirm Order Button click");
             return new CompletePage();
         }
     }

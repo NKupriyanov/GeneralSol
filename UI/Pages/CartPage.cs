@@ -26,6 +26,7 @@ namespace Net.Core.UI.Pages
         {
             ChekOutButton.Click();
             LogSession.CurrentSession.Info("ChekOutButton click");
+            Browser.Instance.ScreenShot("ChekOutButton click");
 
             return new SelectAddressPage();
         }
@@ -35,7 +36,7 @@ namespace Net.Core.UI.Pages
         {
             var count = CartQuantity.Text;
             LogSession.CurrentSession.Info($"Product Quantity is {count}");
-
+            Browser.Instance.ScreenShot("Product Quantity");
             return count;
         }
     }
