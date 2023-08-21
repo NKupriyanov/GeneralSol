@@ -21,8 +21,11 @@ namespace Core.Selenium
             options.AddArgument("--disable-gpu");
             options.AddArgument("incognito");
             options.AddArgument("--start-maximized");
+            
+            var driver = new ChromeDriver(options);
+            driver.Manage().Window.Size = new System.Drawing.Size(1920, 1080);
 
-            return new ChromeDriver(options);
+            return driver;
         }
 
         public static IWebDriver GetFirefoxDriver()
