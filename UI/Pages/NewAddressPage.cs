@@ -50,21 +50,21 @@ namespace Net.Core.UI.Pages
             CityInput.SendKeys(customer.City);
             MobilePhoneInput.SendKeys(customer.MobilePhone);
             AddresAlias.SendKeys(customer.AddressAlias);
-            SelectCountry();
-            SelectState();
+            SelectCountry(customer.Country);
+            SelectState(customer.State);
             SaveAndContinue();
         }
 
-        private void SelectCountry()
+        private void SelectCountry(string country)
         {
             var select = new SelectElement(CountrySelect);
-            select.SelectByValue("216");
+            select.SelectByText(country);
         }
 
-        private void SelectState()
+        private void SelectState(string state)
         {
             var select = new SelectElement(StateSelect);
-            select.SelectByValue("326");
+            select.SelectByText(state);
         }
 
         [AllureStep]

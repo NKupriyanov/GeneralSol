@@ -15,6 +15,8 @@ namespace Net.Core.UI.Models
         public string City { get; set; }
         public string MobilePhone { get; set; }
         public string AddressAlias { get; set; }
+        public string Country { get; set; }
+        public string State { get; set; }
 
         public override string? ToString()
         {

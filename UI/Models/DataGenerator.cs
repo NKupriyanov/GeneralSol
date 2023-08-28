@@ -23,6 +23,8 @@ namespace Net.Core.UI.Models
                 City = faker.Address.City(),
                 MobilePhone = faker.Phone.PhoneNumber(),
                 AddressAlias = faker.Random.Word(),
+                Country = "Украина",
+                State  = "Одесская область"
             };
         }
         
